@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: darkgray;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+#container {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  margin: 0 20px;
+  position: relative;
+}
+
+video,
+#MyCanvas,
+#MyImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+#MyVideo,
+#MyCanvas {
+  display: none;
+}
+
+#game {
+  display: none;
+  position: absolute;
+  font-size: 8vw;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+#sub {
+  position: absolute;
+  font-size: 3vw;
+  color: #fff;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+#MyCanvas {
+  background: rgb(0, 0, 0);
+  transition: background 1.5s;
+}
+
+#control {
+  position: absolute;
+  top: 90%;
+}
+
+.disabled {
+  display: none;
+}
+
+.button {
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  padding: 1vw 2vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#start-btn,
+#start-btn-var1,
+#start-btn-var2 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #ff5733;
+  font-size: 3vw;
+}
+
+#start-btn {
+  top: 53%;
+  left: 52%;
+}
+
+#start-btn-var1 {
+  top: 52%;
+  left: 58%;
+  height: 18vw;
+  width: 18vw;
+}
+
+#start-btn-var2 {
+  top: 50%;
+  left: 37%;
+  font-size: 2vw;
+  height: 16vw;
+  width: 18vw;
+}
+
+.btn-blue {
+  background-color: #124afd;
+}
+
+.btn-green {
+  background-color: #04aa6d;
+}
+
+.btn-yellow {
+  background-color: #ffbf00;
+}
+
+#black-screen {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 0;
+}
+
+#dialogue {
+  overflow: hidden;
+  position: absolute;
+  top: 82%;
+  width: 98%;
+  transform: translate(1%, 0);
+  height: 15%;
+  display: flex;
+  z-index: 50;
+  aspect-ratio: auto;
+}
+
+#blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  filter: blur(1.5px);
+}
+#profile {
+  transform: translate(10%, 10%);
+  height: 80%;
+  aspect-ratio: 1;
+  z-index: 52;
+  transition: none;
+}
+#box {
+  padding-left: 2vw;
+  color: #fff;
+  z-index: 51;
+  width: 100%;
+}
+#name,
+#text {
+  padding: 0;
+  margin: 0;
+}
+#name {
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+  font-size: 2.5vw;
+}
+#text {
+  font-size: 1.5vw;
+  font-weight: 400;
+}
+#skip-btn {
+  width: 11vw;
+  margin: 0;
+  z-index: 52;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  padding-top: 2.5vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 4vw;
+  cursor: pointer;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .modal {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .warning {
+    display: none;
+  }
+}
+#dialogue.transformed {
+  /* Override the top position */
+  top: auto;
+  bottom: 2%; /* Position near the bottom */
+  right: 2%;
+  /* Position near the left */
+  height: auto;
+  width: 5%;
+  aspect-ratio: 1;
+  transform: translate(0, 0); /* No translation needed */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  box-shadow: none;
+}
+
+#blur.transformed {
+  background-color: transparent;
+  filter: blur(0);
+}
+
+#profile.transformed {
+  transform: translate(0, 0);
+  width: 80%;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+#box.transformed {
+  display: none;
+}
+
+#skip-btn.transformed {
+  display: none;
+}
