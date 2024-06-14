@@ -107,4 +107,5 @@ video.addEventListener("play", function () {
   if (bgMusic.paused) {
     bgMusic.play();
   }
+  video.muted = false;
 });
