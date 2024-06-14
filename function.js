@@ -103,3 +103,8 @@ function dialogueMinimize(state) {
     elements.forEach((element) => (element.className = ""));
   }
 }
+video.addEventListener("play", function () {
+  if (bgMusic.paused) {
+    bgMusic.play();
+  }
+});
