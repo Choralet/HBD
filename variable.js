@@ -11,9 +11,17 @@ const dialogue = {
   blur: document.getElementById("blur"),
 };
 
+const gameElem = {
+  all: document.getElementById("tool"),
+  frame: document.getElementById("frame"),
+  btn: document.getElementById("specBtn"),
+  submit: document.getElementById("submit"),
+};
+
 const resume = document.getElementById("btn1");
 const startBtn = document.getElementById("start-btn");
 const skipBtn = document.getElementById("skip-btn");
+const testBtn = document.getElementById("btn2");
 
 const blackScreen = document.getElementById("black-screen");
 const gameTitle = document.getElementById("game");
@@ -29,17 +37,17 @@ const introVariant = {
   0: {
     id: "start-btn",
     text: "REDEEM YOUR PRESENT!",
-    img: "images/intro/1.PNG",
+    img: "images/intro/1.GIF",
   },
   1: {
     id: "start-btn-var1",
     text: "DON'T YOU WANT A GIFT? &#128515;",
-    img: "images/intro/2.PNG",
+    img: "images/intro/2.GIF",
   },
   2: {
     id: "start-btn-var2",
     text: "JUST CLICK THE BUTTON IT'S NOT THAT HARD &#128557;",
-    img: "images/intro/3.PNG",
+    img: "images/intro/3.GIF",
   },
 };
 const gameVariant = {
@@ -59,6 +67,11 @@ const dialogueVariant = {
   1: {
     name: "NERD",
     text: "Actually... One More Time..",
+    img: "images/dialogue/nerd.PNG",
+  },
+  2: {
+    name: "NERD",
+    text: "Play 5 games to get your present back..",
     img: "images/dialogue/nerd.PNG",
   },
 };

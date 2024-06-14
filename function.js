@@ -60,32 +60,45 @@ async function fadeOut(time = 1000, type = blackScreen) {
   }
 }
 
-async function showDialogue(
-  show,
-  { name = "NERD", text = testText, img = "images/dialogue/nerd.PNG" } = {}
-) {
-  const { all, name: nameElem, text: textElem, img: imgElem } = dialogue;
+function typingEffect(element = dialogue.text, text = "placeholder") {
+  if (typingCount < text.length) {
+    element.innerHTML += text.charAt(typingCount);
+    typingCount++;
+    setTimeout(() => typingEffect(element, text), 20);
+  }
+}
+
+async function showDialogue(show, number) {
+  const { name: nameElem, text: textElem, img: imgElem } = dialogue;
 
   if (show) {
+    const { name, text, img } = dialogueVariant[number];
     typingCount = 0;
     nameElem.innerHTML = name;
     textElem.innerHTML = "";
     imgElem.src = img;
-    all.style.display = "flex";
-    await wait(500);
+    dialogueMinimize(false);
+    await wait(300);
     typingEffect(textElem, text);
   } else {
-    all.style.display = "none";
+    await wait(number || 0);
+    dialogueMinimize(true);
   }
 }
-function typingEffect(
-  element = dialogue.text,
-  text = "placeholder",
-  speed = 30
-) {
-  if (typingCount < text.length) {
-    element.innerHTML += text.charAt(typingCount);
-    typingCount++;
-    setTimeout(() => typingEffect(element, text, speed), speed);
+function dialogueMinimize(state) {
+  const elements = [
+    dialogue.img,
+    dialogue.all,
+    dialogue.blur,
+    dialogue.box,
+    skipBtn,
+  ];
+
+  if (state === undefined) {
+    elements.forEach((element) => element.classList.toggle("transformed"));
+  } else if (state) {
+    elements.forEach((element) => element.classList.add("transformed"));
+  } else {
+    elements.forEach((element) => (element.className = ""));
   }
 }

@@ -11,15 +11,15 @@ const project = {
     7 = outro
   */
 };
-showDialogue(true);
-
-const testBtn = document.getElementById("btn2");
+showDialogue(false);
+gameElem.all.style.display = "none";
 
 async function resetScene() {
   startBtnCount = 1;
   reset = introVariant[0];
   updateStartButton(reset.id, reset.text, "images/blank.PNG");
   gameTitle.style.display = "none";
+  gameElem.all.style.display = "none";
   startBtn.style.display = "none";
   video.pause();
   video.currentTime = 0;
@@ -47,34 +47,18 @@ startBtn.addEventListener("click", async function () {
     upd = introVariant[startBtnCount];
     updateStartButton(upd.id, upd.text, upd.img);
     if (startBtnCount == 2) {
-      showDialogue(true, dialogueVariant[1]);
+      showDialogue(true, 1);
     }
   } else if (startBtnCount === 3) {
     project.scene = 1;
   }
   startBtnCount++;
 });
-function dialogueMinimize(state) {
-  const elements = [
-    dialogue.img,
-    dialogue.all,
-    dialogue.blur,
-    dialogue.box,
-    skipBtn,
-  ];
-
-  if (state === undefined) {
-    elements.forEach((element) => element.classList.toggle("transformed"));
-  } else if (state) {
-    elements.forEach((element) => element.classList.add("transformed"));
-  } else {
-    elements.forEach((element) => (element.className = ""));
-  }
-}
 
 skipBtn.addEventListener("click", () => {
   dialogueMinimize();
 });
+
 dialogue.img.addEventListener("click", () => {
   dialogueMinimize();
 });
@@ -89,7 +73,9 @@ resume.addEventListener("click", () => {
 });
 
 async function scene1() {
+  showDialogue(false);
   video.src = "video/cutscene1.mp4";
+  video.load();
   await fadeIn(1000);
   startBtn.style.display = "none";
   setDisplayElement("vid");
@@ -113,4 +99,5 @@ async function scene2() {
   await fadeIn(2000, gameTitle);
   await fadeOut(1000, gameTitle);
   await fadeOut(1000);
+  showDialogue(true, 2);
 }

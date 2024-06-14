@@ -7,6 +7,7 @@
     <title>HBD &#127873; &#127881;</title>
   </head>
   <body>
+    <div id="preload"></div>
     <div id="container">
       <div id="game">
         GAME 1/5
@@ -14,7 +15,7 @@
       </div>
       <video id="MyVideo" src="video/cutscene1.mp4"></video>
       <canvas id="MyCanvas"></canvas>
-      <img id="MyImage" src="images/intro/1.PNG" />
+      <img id="MyImage" src="images/intro/1.GIF" />
       <button class="button" id="start-btn">REDEEM YOUR PRESENT!</button>
       <div id="black-screen"></div>
       <div id="dialogue">
@@ -31,14 +32,23 @@
         </span>
         <button id="skip-btn">&or;</button>
       </div>
+      <div id="tool">
+        <div id="frame"></div>
+        <button id="specBtn"></button>
+        <button id="submit"></button>
+
+        <input placeholder="0" type="text" id="numInput" name="numInput" />
+      </div>
     </div>
     <div id="control">
       <button id="btn1" class="button">Resume</button>
       <button id="btn2" class="button">test</button>
     </div>
+    <script src="settings.js"></script>
     <script src="variable.js"></script>
     <script src="function.js"></script>
     <script src="main.js"></script>
+
     <script src="canvas.js"></script>
   </body>
 </html>
