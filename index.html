@@ -7,6 +7,11 @@
     <title>HBD &#127873; &#127881;</title>
   </head>
   <body>
+    <audio id="audio" loop autoplay>
+      <source src="audio/bg.mp3" type="audio/mpeg" />
+
+      Your browser does not support the audio element.
+    </audio>
     <div id="preload"></div>
     <div id="container">
       <div id="game">
@@ -20,15 +25,10 @@
       <div id="black-screen"></div>
       <div id="dialogue">
         <div id="blur"></div>
-        <img id="profile" src="images/dialogue/nerd.PNG" />
+        <img id="profile" src="images/dialogue/confuse.PNG" />
         <span id="box">
-          <p id="name">NERD</p>
-          <p id="text">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi
-            voluptate quidem alias debitis ut cum animi dolorum itaque beatae
-            voluptatum inventore, ex placeat a ducimus in laboriosam omnis
-            impedit magnam?
-          </p>
+          <p id="name">What</p>
+          <p id="text">Nothing here GO AWAY</p>
         </span>
         <button id="skip-btn">&or;</button>
       </div>
@@ -36,8 +36,14 @@
         <div id="frame"></div>
         <button id="specBtn"></button>
         <button id="submit"></button>
-
-        <input placeholder="0" type="text" id="numInput" name="numInput" />
+        <input
+          placeholder="0"
+          type="text"
+          id="numInput"
+          name="numInput"
+          spellcheck="false"
+          autocomplete="off"
+        />
       </div>
     </div>
     <div id="control">

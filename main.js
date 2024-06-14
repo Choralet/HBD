@@ -44,6 +44,7 @@ watchVariable(project, "scene", async (newValue, oldValue) => {
 
 startBtn.addEventListener("click", async function () {
   if (startBtnCount <= 2) {
+    bgMusic.play();
     upd = introVariant[startBtnCount];
     updateStartButton(upd.id, upd.text, upd.img);
     if (startBtnCount == 2) {
@@ -99,5 +100,52 @@ async function scene2() {
   await fadeIn(2000, gameTitle);
   await fadeOut(1000, gameTitle);
   await fadeOut(1000);
+  gameElem.all.style.display = "block";
   showDialogue(true, 2);
 }
+
+function lowOrHigh(input, target) {
+  if (input == target) {
+    return 0;
+  } else if (input < target) {
+    return 1;
+  } else return 2;
+}
+
+gameElem.submit.addEventListener("click", () => {
+  const parsedNumber = parseFloat(gameElem.input.value);
+  const target = 37.37734043;
+
+  if (!isNaN(parsedNumber)) {
+    guessCount.value += 1;
+    switch (lowOrHigh(parsedNumber, target)) {
+      case 0: //WIN
+        showDialogue(true, 3);
+        break;
+      case 1: //Higher
+        gameElem.frame.style.top = "40%";
+        break;
+      case 2: //Lower
+        gameElem.frame.style.top = "65%";
+        break;
+    }
+  } else {
+    showDialogue(true, 3);
+  }
+});
+gameElem.btn.addEventListener("click", async () => {
+  image.src = gameVariant[1].img[2];
+  await wait(300);
+  showDialogue(true, 5);
+});
+
+watchVariable(guessCount, "value", (newValue, oldValue) => {
+  switch (newValue) {
+    case 3:
+      showDialogue(true, 4);
+      break;
+    case 10:
+      showDialogue(true, 6);
+      break;
+  }
+});

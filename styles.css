@@ -100,7 +100,7 @@ video,
   transform: translate(-50%, -50%);
   z-index: 10;
   background-color: #ff5733;
-  font-size: 3vw;
+  font-size: 2.5vw;
 }
 
 #start-btn {
@@ -111,7 +111,7 @@ video,
 #start-btn-var1 {
   top: 52%;
   left: 58%;
-  height: 18vw;
+  height: 13vw;
   width: 18vw;
 }
 
@@ -119,7 +119,7 @@ video,
   top: 50%;
   left: 37%;
   font-size: 2vw;
-  height: 16vw;
+  height: 14vw;
   width: 18vw;
 }
 
@@ -275,12 +275,12 @@ video,
 #frame {
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 65%;
+  top: 40%;
   left: 13%;
   width: 22%;
   height: 14%;
   background-color: rgba(0, 0, 0, 0);
-  border: 6px solid rgb(255, 62, 62);
+  border: 6px solid rgb(255, 84, 84);
   border-radius: 5px;
 
   margin: 0;

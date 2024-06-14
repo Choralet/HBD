@@ -14,6 +14,7 @@ const dialogue = {
 const gameElem = {
   all: document.getElementById("tool"),
   frame: document.getElementById("frame"),
+  input: document.getElementById("numInput"),
   btn: document.getElementById("specBtn"),
   submit: document.getElementById("submit"),
 };
@@ -29,6 +30,9 @@ const gameTitleSub = document.getElementById("sub");
 
 let startBtnCount = 1;
 var typingCount = 0;
+const guessCount = {
+  value: 0,
+};
 
 const testText =
   "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi voluptate quidem alias debitis ut cum animi dolorum itaque beatae voluptatum inventore, ex placeat a ducimus in laboriosam omnis impedit magnam?";
@@ -63,15 +67,64 @@ const gameVariant = {
   5: { text: "GAME 5/5", sub: "(superb &#128526;)" },
 };
 
-const dialogueVariant = {
-  1: {
+const profileVariant = {
+  what: {
+    name: "WhAt??",
+    img: "images/dialogue/confuse.PNG",
+  },
+  good: {
+    name: "NICE GUY",
+    img: "images/dialogue/good.PNG",
+  },
+  nerd: {
     name: "NERD",
-    text: "Actually... One More Time..",
     img: "images/dialogue/nerd.PNG",
   },
+  mogo: {
+    name: "mOgo jAn",
+    img: "images/dialogue/mogo.PNG",
+  },
+  angry: {
+    name: "&$!#%",
+    img: "images/dialogue/angry.PNG",
+  },
+  shit: {
+    name: "STOPPPPPPPP",
+    img: "images/dialogue/shit.PNG",
+  },
+  dog: {
+    name: "HAHAHAHAH",
+    img: "images/dialogue/dog.GIF",
+  },
+};
+
+const dialogueVariant = {
+  0: {
+    profile: "what",
+    text: "Nothing here GO AWAY",
+  },
+  1: {
+    profile: "nerd",
+    text: "Actually... One More Time..",
+  },
   2: {
-    name: "NERD",
-    text: "Play 5 games to get your present back..",
-    img: "images/dialogue/nerd.PNG",
+    profile: "mogo",
+    text: "PLaY 5 gAmes to gET yoUr pREseNt BacK..",
+  },
+  3: {
+    profile: "angry",
+    text: "I said N-U-M-B-E-R. Do you understand? 😡 😡 😡",
+  },
+  4: {
+    profile: "nerd",
+    text: "*Hint Unlocked*",
+  },
+  5: {
+    profile: "dog",
+    text: "The hint is just give up. You can't win this for sure",
+  },
+  6: {
+    profile: "nerd",
+    text: "Actually... win or loss it's doesn't matter... So just click give up to continue",
   },
 };

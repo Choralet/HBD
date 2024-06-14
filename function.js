@@ -72,7 +72,8 @@ async function showDialogue(show, number) {
   const { name: nameElem, text: textElem, img: imgElem } = dialogue;
 
   if (show) {
-    const { name, text, img } = dialogueVariant[number];
+    const { text, profile } = dialogueVariant[number];
+    const { name, img } = profileVariant[profile];
     typingCount = 0;
     nameElem.innerHTML = name;
     textElem.innerHTML = "";
