@@ -104,7 +104,7 @@ async function scene2() {
   showDialogue(true, 2);
 }
 
-function lowOrHigh(input, target) {
+function checkGuess(input, target) {
   if (input == target) {
     return 0;
   } else if (input < target) {
@@ -113,39 +113,48 @@ function lowOrHigh(input, target) {
 }
 
 gameElem.submit.addEventListener("click", () => {
-  const parsedNumber = parseFloat(gameElem.input.value);
-  const target = 37.37734043;
-
-  if (!isNaN(parsedNumber)) {
-    guessCount.value += 1;
-    switch (lowOrHigh(parsedNumber, target)) {
-      case 0: //WIN
-        showDialogue(true, 3);
-        break;
-      case 1: //Higher
-        gameElem.frame.style.top = "40%";
-        break;
-      case 2: //Lower
-        gameElem.frame.style.top = "65%";
-        break;
-    }
+  if (guessCount.value == 0) {
+    project.scene = 3;
   } else {
-    showDialogue(true, 3);
+    const userGuess = parseFloat(gameElem.input.value);
+    const target = 37.37734043;
+
+    if (!isNaN(userGuess)) {
+      guessCount.value -= 1;
+      const result = checkGuess(userGuess, targetNumber);
+      if (result === 0) {
+        // Win
+        showDialogue(true, 8);
+      } else if (result === 1) {
+        // Higher
+        gameElem.frame.style.top = "40%";
+      } else if (result === 2) {
+        // Lower
+        gameElem.frame.style.top = "65%";
+      }
+    } else {
+      showDialogue(true, 3);
+    }
   }
 });
 gameElem.btn.addEventListener("click", async () => {
-  image.src = gameVariant[1].img[2];
-  await wait(300);
-  showDialogue(true, 5);
+  if (guessCount.value > 7) {
+    showDialogue(true, 7);
+  } else if (!guessCount.hint) {
+    image.src = gameVariant[1].img[2];
+    await wait(300);
+    showDialogue(true, 5);
+    guessCount.hint = true;
+  } else if (guessCount.hint) {
+    guessCount.value = 0;
+  }
 });
 
-watchVariable(guessCount, "value", (newValue, oldValue) => {
-  switch (newValue) {
-    case 3:
-      showDialogue(true, 4);
-      break;
-    case 10:
-      showDialogue(true, 6);
-      break;
+watchVariable(guessCount, "value", (newValue) => {
+  gameElem.text.innerHTML = "Guess Left: " + newValue;
+  if (newValue === 7) {
+    showDialogue(true, 4);
+  } else if (newValue === 0) {
+    showDialogue(true, 6);
   }
 });

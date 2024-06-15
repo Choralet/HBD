@@ -17,6 +17,7 @@ const gameElem = {
   input: document.getElementById("numInput"),
   btn: document.getElementById("specBtn"),
   submit: document.getElementById("submit"),
+  text: document.getElementById("count"),
 };
 
 const resume = document.getElementById("btn1");
@@ -30,8 +31,10 @@ const gameTitleSub = document.getElementById("sub");
 
 let startBtnCount = 1;
 var typingCount = 0;
+let isTyping = false;
 const guessCount = {
-  value: 0,
+  value: 10,
+  hint: false,
 };
 
 const testText =
@@ -126,5 +129,13 @@ const dialogueVariant = {
   6: {
     profile: "nerd",
     text: "Actually... win or loss it's doesn't matter... So just click give up to continue",
+  },
+  7: {
+    profile: "good",
+    text: "Cmon, Give it a try.",
+  },
+  8: {
+    profile: "angry",
+    text: "U CHEATER!!!",
   },
 };

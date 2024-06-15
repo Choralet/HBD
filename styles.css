@@ -327,3 +327,12 @@ video,
   text-align: right;
   z-index: 150;
 }
+#count {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 25%;
+  left: 52%;
+  font-size: 3vw;
+  color: black;
+  z-index: 150;
+}

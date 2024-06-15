@@ -61,6 +61,7 @@ async function fadeOut(time = 1000, type = blackScreen) {
 }
 
 function typingEffect(element = dialogue.text, text = "placeholder") {
+  if (!isTyping) return;
   if (typingCount < text.length) {
     element.innerHTML += text.charAt(typingCount);
     typingCount++;
@@ -70,16 +71,18 @@ function typingEffect(element = dialogue.text, text = "placeholder") {
 
 async function showDialogue(show, number) {
   const { name: nameElem, text: textElem, img: imgElem } = dialogue;
-
+  typingCount = 0;
+  isTyping = false;
   if (show) {
     const { text, profile } = dialogueVariant[number];
     const { name, img } = profileVariant[profile];
-    typingCount = 0;
+
     nameElem.innerHTML = name;
     textElem.innerHTML = "";
     imgElem.src = img;
     dialogueMinimize(false);
     await wait(300);
+    isTyping = true;
     typingEffect(textElem, text);
   } else {
     await wait(number || 0);
